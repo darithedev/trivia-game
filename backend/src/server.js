@@ -13,7 +13,7 @@ app.get('/', async(req,res) => {
     res.json({ message: "Express server is healthy."});
 });
 
-app.get('/api/trivia/:amount/:category/:difficulty/:quizType', async(req, res) => {
+app.get('/api/trivia/:amount', async(req, res) => {
     
 });
 
