@@ -14,7 +14,9 @@ app.get('/', async(req,res) => {
 });
 
 app.get('/api/trivia/:amount', async(req, res) => {
-    
+    const { amount } = req.params; // Amount of questions requested (max 50)
+    const { category, difficulty, type } = req.query; // type: t/f or multiple choice
+
 });
 
 app.listen(PORT, '127.0.0.1', () => {
