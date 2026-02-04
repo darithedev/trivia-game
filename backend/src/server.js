@@ -13,6 +13,10 @@ app.get('/', async(req,res) => {
     res.json({ message: "Express server is healthy."});
 });
 
+app.get('/api/trivia/:amount/:category/:difficulty/:quizType', async(req, res) => {
+    
+});
+
 app.listen(PORT, '127.0.0.1', () => {
     console.log(`Express server is running on port ${PORT}`)
 });
