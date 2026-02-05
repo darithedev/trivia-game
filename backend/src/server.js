@@ -17,6 +17,18 @@ app.get('/api/trivia/:amount', async(req, res) => {
     const { amount } = req.params; // Amount of questions requested (max 50)
     const { category, difficulty, type } = req.query; // All optional; type: t/f or multiple choice
 
+    try {
+        const params = new URLSearchParams({
+            amount: amount, // number of questions
+            category: category,
+            difficulty: difficulty,
+            type: type, // quiz type
+        });
+
+    } catch (error) {
+        
+    }
+
 });
 
 app.listen(PORT, '127.0.0.1', () => {
