@@ -25,6 +25,8 @@ app.get('/api/trivia/:amount', async(req, res) => {
             type: type, // quiz type
         });
 
+        const url = `https://opentdb.com/api.php?${params}`;
+
     } catch (error) {
         
     }
