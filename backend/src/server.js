@@ -27,8 +27,10 @@ app.get('/api/trivia/:amount', async(req, res) => {
 
         const url = `https://opentdb.com/api.php?${params}`;
 
+        const response = await fetch(url);
+
     } catch (error) {
-        
+        res.status(500).json({ error: error.message })
     }
 
 });
