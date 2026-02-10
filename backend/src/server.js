@@ -17,6 +17,10 @@ app.get('/', async(req,res) => {
 
 app.get('/api/category', async(req, res) => {
     try {
+        if (categories.length > 0) {
+            return res.json(categories);
+        }
+
         const url = 'https://opentdb.com/api_category.php';
         const response = await fetch(url);
 
