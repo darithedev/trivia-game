@@ -22,6 +22,7 @@ app.get('/api/category', async(req, res) => {
             throw new Error("Error with fetching trivia game categories!");
         }
 
+        const data = await response.json();
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ error: error.message })
