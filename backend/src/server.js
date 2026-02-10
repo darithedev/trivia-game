@@ -18,6 +18,10 @@ app.get('/api/category', async(req, res) => {
         const url = 'https://opentdb.com/api_category.php';
         const response = await fetch(url);
 
+        if(!response.ok) {
+            throw new Error("Error with fetching trivia game categories!");
+        }
+        
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
