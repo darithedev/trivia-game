@@ -14,7 +14,11 @@ app.get('/', async(req,res) => {
 });
 
 app.get('/api/category', async(req, res) => {
-    
+    try {
+
+    } catch (error) {
+        
+    }
 });
 
 app.get('/api/trivia/:amount', async(req, res) => {
