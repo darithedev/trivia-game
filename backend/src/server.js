@@ -15,6 +15,7 @@ app.get('/', async(req,res) => {
 
 app.get('/api/category', async(req, res) => {
     try {
+        const url = 'https://opentdb.com/api_category.php';
 
     } catch (error) {
         res.status(500).json({ error: error.message })
