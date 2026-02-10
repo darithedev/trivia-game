@@ -21,8 +21,9 @@ app.get('/api/category', async(req, res) => {
         if(!response.ok) {
             throw new Error("Error with fetching trivia game categories!");
         }
-        
+
     } catch (error) {
+        console.error(error.message);
         res.status(500).json({ error: error.message })
     }
 });
