@@ -9,6 +9,8 @@ const PORT = 8080;
 app.use(express.json());
 app.use(cors());
 
+let categories = [];
+
 app.get('/', async(req,res) => {
     res.json({ message: "Express server is healthy."});
 });
