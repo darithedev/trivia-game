@@ -29,6 +29,9 @@ app.get('/api/category', async(req, res) => {
         }
 
         const data = await response.json();
+
+        categories = data.trivia_categories
+        res.status(200).json(categories);
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ error: error.message })
