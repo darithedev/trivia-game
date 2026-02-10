@@ -13,6 +13,10 @@ app.get('/', async(req,res) => {
     res.json({ message: "Express server is healthy."});
 });
 
+app.get('/api/category', async(req, res) => {
+    
+});
+
 app.get('/api/trivia/:amount', async(req, res) => {
     const { amount } = req.params; // Amount of questions requested (max 50)
     const { category, difficulty, type } = req.query; // All optional; type: t/f or multiple choice
