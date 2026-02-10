@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 let categories = [];
+let lastFetchedDate = null;
 
 app.get('/', async(req,res) => {
     res.json({ message: "Express server is healthy."});
