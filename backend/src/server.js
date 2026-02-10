@@ -29,6 +29,10 @@ app.get('/api/trivia/:amount', async(req, res) => {
 
         const response = await fetch(url);
 
+        const data = await response.json();
+
+        res.status(200).json(data);
+
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
