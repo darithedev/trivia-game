@@ -18,6 +18,8 @@ app.get('/', async(req,res) => {
 
 app.get('/api/category', async(req, res) => {
     try {
+        const today = new Date();
+
         if (categories.length > 0) {
             return res.json(categories);
         }
