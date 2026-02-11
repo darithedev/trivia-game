@@ -12,10 +12,12 @@ app.use(cors());
 let categories = [];
 let lastFetchedDate = null;
 
+// Returns message that server is healthy
 app.get('/', async(req,res) => {
     res.json({ message: "Express server is healthy."});
 });
 
+// Fetches all available trivia categories once per day
 app.get('/api/category', async(req, res) => {
     try {
         const today = new Date();
@@ -43,6 +45,7 @@ app.get('/api/category', async(req, res) => {
     }
 });
 
+// Fetches trivia quiz 
 app.get('/api/trivia/:amount', async(req, res) => {
     const { amount } = req.params; // Amount of questions requested (max 50)
     const { category, difficulty, type } = req.query; // All optional; type: t/f or multiple choice
@@ -50,6 +53,7 @@ app.get('/api/trivia/:amount', async(req, res) => {
     try {
         const params = new URLSearchParams({ amount }); // amount: number of questions
 
+        // Appends category, difficulty, and or type is queries are passed
         if (category) params.append('category', category);
         if (difficulty) params.append('difficulty', difficulty);
         if (type) params.append('type', type); // quiz type
@@ -65,7 +69,6 @@ app.get('/api/trivia/:amount', async(req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
-
 });
 
 // Determines if the user won or lost based on trivia quiz score
