@@ -68,6 +68,27 @@ app.get('/api/trivia/:amount', async(req, res) => {
 
 });
 
+// Determines if the user won or lost based on trivia quiz score
+app.post('/api/result', async(req, res) => {
+    const { score } = req.body;
+
+    try {
+        if (score < 0) {
+            throw new Error("Error! Score is less than 0.")
+        }
+
+        const won = score >= 70; // bool value
+
+        res.status(200).json({
+            won,
+            result: won ? 'won' : 'lost'
+        });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.listen(PORT, '127.0.0.1', () => {
     console.log(`Express server is running on port ${PORT}`)
 });
