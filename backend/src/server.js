@@ -20,9 +20,10 @@ app.get('/api/category', async(req, res) => {
     try {
         const today = new Date();
 
-        if (categories.length > 0) {
+        if (categories.length > 0 && lastFetchedDate === today.getDate()) {
+            console.log("returned cached categories")
             return res.json(categories);
-        }
+        } else console.log("fetching fresh categories");
 
         const url = 'https://opentdb.com/api_category.php';
         const response = await fetch(url);
