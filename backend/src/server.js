@@ -35,6 +35,7 @@ app.get('/api/category', async(req, res) => {
         const data = await response.json();
 
         categories = data.trivia_categories
+        lastFetchedDate = today.getDate();
         res.status(200).json(categories);
     } catch (error) {
         console.error(error.message);
