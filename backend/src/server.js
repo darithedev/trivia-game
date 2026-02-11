@@ -48,11 +48,11 @@ app.get('/api/trivia/:amount', async(req, res) => {
     const { category, difficulty, type } = req.query; // All optional; type: t/f or multiple choice
 
     try {
-        const params = new URLSearchParams({ amount });
+        const params = new URLSearchParams({ amount }); // amount: number of questions
 
         if (category) params.append('category', category);
         if (difficulty) params.append('difficulty', difficulty);
-        if (type) params.append('type', type);
+        if (type) params.append('type', type); // quiz type
 
         const url = `https://opentdb.com/api.php?${params}`;
 
@@ -65,10 +65,6 @@ app.get('/api/trivia/:amount', async(req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
-
-});
-
-app.get('/api/result', async(req, res) => {
 
 });
 
