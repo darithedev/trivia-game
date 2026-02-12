@@ -1,7 +1,8 @@
-const GamePlay = () => {
+const GamePlay = ({ onSubmit }) => {
     return (
         <div className="game-play">
             <p>Hello from GamePlay</p>
+            <button onClick={onSubmit}>Submit</button>
         </div>
     )
 }
