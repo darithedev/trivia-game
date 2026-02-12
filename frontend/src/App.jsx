@@ -16,15 +16,21 @@ function App() {
   return (
     <>
       {screen === "setup" && (
-        <GameSetup />
+        <GameSetup 
+          onPlay={() => setScreen("play")}
+        />
       )}
 
       {screen === "play" && (
-        <GamePlay />
+        <GamePlay 
+          onSubmit={() => setScreen("result")}
+        />
       )}
 
       {screen === "result" && (
-        <GameResult />
+        <GameResult
+          onReset={() => setScreen("setup")}
+        />
       )}
     </>
   )
