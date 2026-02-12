@@ -75,6 +75,24 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
                     </select>
                 </label>
 
+                <label>
+                    Select Question Type:
+                    <select
+                        value={preferences.type}
+                        onChange={((event) => 
+                            setPreferences(prev => ({
+                                ...prev,
+                                type: event.target.value
+                            }))
+                        )}
+                    >
+                        <option value="">Any Type</option>
+                        {Object.entries(type).map(([key, value]) => (
+                            <option key={key} value={key}>{value}</option>
+                        ))}
+                    </select>
+                </label>
+                {console.log(preferences)}
                 <button type="submit">Play Trivia</button>
             </form>
         </div>
