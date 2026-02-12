@@ -32,6 +32,11 @@ const GamePlay = ({ questionsObj, onSubmit }) => {
                                     .parseFromString(`<!doctype html><body>${choice}`, 'text/html')
                                     .body.textContent
                                 )}
+                                style={userChoices[index] === parser
+                                    .parseFromString(`<!doctype html><body>${choice}`, 'text/html')
+                                    .body.textContent 
+                                    ? { backgroundColor: "gray"} : {}
+                                }
                             >
                                 {parser
                                     .parseFromString(`<!doctype html><body>${choice}`, 'text/html')
