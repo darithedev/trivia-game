@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const GameSetup = ({ preferences, setPreferences, onPlay }) => {
     const [fetchedCategories, setFetchedCategories] = useState([]);
@@ -13,6 +13,10 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
             .then((response) => response.json)
             .then((result) => setFetchedCategories(result))
     };
+
+    useEffect(() => {
+        fetchCategory()
+    }, []);
 
     return (
         <div className="game-setup">
