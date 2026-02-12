@@ -46,7 +46,8 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
                         onChange={((event) => 
                             setPreferences(prev => ({
                                 ...prev,
-                                category: event.target.value
+                                category: event.target.value,
+                                categoryName: event.target.selectedOptions[0].text
                             }))
                         )}
                     >
