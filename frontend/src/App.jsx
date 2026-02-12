@@ -8,7 +8,7 @@ function App() {
   const [screen, setScreen] = useState("setup"); // 3 screens: setup, play, result
   const [questionsObj, setQuestionsObj] = useState({});
   const [preferences, setPreferences] = useState({ 
-    amount: 0, 
+    amount: 5, 
     category: "", 
     difficulty: "", 
     type: "",
@@ -22,7 +22,7 @@ function App() {
     if (preferences.difficulty) params.append('difficulty', preferences.difficulty);
     if (preferences.type) params.append('type', preferences.type);
 
-    const url = `http://localhost:8080/${preferences.amount}?${params}`;
+    const url = `http://localhost:8080/api/trivia/${preferences.amount}?${params}`;
 
     fetch(url)
       .then((response) => response.json())
