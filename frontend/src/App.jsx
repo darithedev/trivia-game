@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import GameSetup from './components/GameSetup.jsx'
 import GamePlay from './components/GamePlay.jsx'
@@ -27,6 +27,12 @@ function App() {
       .then((response) => response.json())
       .then((result) => setQuestionsObj(result))
   }
+
+  useEffect(() => {
+    if (screen === "play") {
+      fetchTriviaQuiz();
+    }
+  }, [screen]);
 
   return (
     <>
