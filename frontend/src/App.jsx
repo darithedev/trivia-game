@@ -14,6 +14,20 @@ function App() {
     type: "",
   });
 
+  const fetchTriviaQuiz = () => {
+    const params = new URLSearchParams();
+
+    if (preferences.category) params.append('category', preferences.category);
+    if (preferences.difficulty) params.append('difficulty', preferences.difficulty);
+    if (preferences.type) params.append('type', preferences.type);
+
+    const url = `http://localhost:8080/${preferences.amount}?${params}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((result) => setQuestionsObj(result))
+  }
+
   return (
     <>
       {screen === "setup" && (
