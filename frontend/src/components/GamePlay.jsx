@@ -3,6 +3,10 @@ import { useState } from 'react'
 const GamePlay = ({ questionsObj, onSubmit }) => {
     const [userChoices, setUserChoices] = useState({});
     const parser = new DOMParser();
+
+    if (!questionsObj?.results) {
+        return <p>Loading Trivia Questions</p>
+    }
     
     const handleSelection = () => {
 
@@ -34,7 +38,7 @@ const GamePlay = ({ questionsObj, onSubmit }) => {
                     </div>
                 ))}
             </div>
-            <button onClick={onSubmit}>Submit</button>
+            <button onClick={() => onSubmit(userChoices)}>Submit</button>
         </div>
     )
 }
