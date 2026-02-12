@@ -14,7 +14,7 @@ function App() {
     difficulty: "", 
     type: "",
   });
-  const [userChoices, setUserChoices] = useState({})
+  const [userChoices, setUserChoices] = useState(null)
 
   const fetchTriviaQuiz = () => {
     const params = new URLSearchParams();
