@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import GameSetup from './components/GameSetup.jsx'
 import GamePlay from './components/GamePlay.jsx'
+import GameResult from './components/GameResult.jsx'
 
 function App() {
   const [screen, setScreen] = useState("setup"); // 3 screens: setup, play, result
@@ -20,6 +21,10 @@ function App() {
 
       {screen === "play" && (
         <GamePlay />
+      )}
+
+      {screen === "result" && (
+        <GameResult />
       )}
     </>
   )
