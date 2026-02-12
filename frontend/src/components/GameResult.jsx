@@ -1,7 +1,7 @@
-const GameResult = ({ onReset }) => {
+const GameResult = ({ userChoices, questionsObj, onReset }) => {
     return (
         <div className="game-result">
-            <p>Hello from GameResult</p>
+            <h2>Trivia Quiz Result</h2>
             <button onClick={onReset}>Reset</button>
         </div>
     )
