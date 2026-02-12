@@ -1,4 +1,4 @@
-const GameSetup = ({ onPlay }) => {
+const GameSetup = ({ preferences, setPreferences, onPlay }) => {
     return (
         <div className="game-setup">
             <p>Hello from GameSetup</p>
