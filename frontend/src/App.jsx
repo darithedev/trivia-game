@@ -6,6 +6,7 @@ import GameResult from './components/GameResult.jsx'
 
 function App() {
   const [screen, setScreen] = useState("setup"); // 3 screens: setup, play, result
+  const [questionsObj, setQuestionsObj] = useState({});
   const [preferences, setPreferences] = useState({ 
     amount: null, 
     category: "", 
