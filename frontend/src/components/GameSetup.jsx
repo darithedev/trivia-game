@@ -2,7 +2,10 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
     return (
         <div className="game-setup">
             <p>Hello from GameSetup</p>
-            <button onClick={onPlay}>Play</button>
+            <form onSubmit={onPlay}>
+
+                <button type="submit">Play Trivia</button>
+            </form>
         </div>
     )
 }
