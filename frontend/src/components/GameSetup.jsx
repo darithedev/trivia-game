@@ -6,6 +6,14 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
     const difficulty = ["easy", "medium", "hard"];
     const type = { multiple: "Multiple Choice", boolean: "True or False" };
 
+    const fetchCategory = () => {
+        const url = `http://localhost:8080/api/category`;
+
+        fetch(url)
+            .then((response) => response.json)
+            .then((result) => setFetchedCategories(result))
+    };
+
     return (
         <div className="game-setup">
             <p>Hello from GameSetup</p>
