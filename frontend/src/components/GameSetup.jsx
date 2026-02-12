@@ -20,7 +20,7 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
 
     return (
         <div className="game-setup">
-            <p>Hello from GameSetup</p>
+            <h1>Trivia Game Setup</h1>
             <form onSubmit={onPlay}>
                 <label>
                     How Many Questions:
