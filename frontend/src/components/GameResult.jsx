@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const GameResult = ({ userChoices, questionsObj, onReset }) => {
     const [endResult, setEndResult] = useState({});
@@ -17,6 +17,10 @@ const GameResult = ({ userChoices, questionsObj, onReset }) => {
         .then((response) => response.json())
         .then((result) => setEndResult(result));
     }
+
+    useEffect(() => {
+        fetchResult();
+    }, []);
 
     return (
         <div className="game-result">
