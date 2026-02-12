@@ -8,8 +8,11 @@ const GamePlay = ({ questionsObj, onSubmit }) => {
         return <p>Loading Trivia Questions</p>
     }
     
-    const handleSelection = () => {
-
+    const handleSelection = (index, selection) => {
+        setUserChoices(prev => ({
+            ...prev,
+            [index]: selection
+        }))
     }
 
     return (
