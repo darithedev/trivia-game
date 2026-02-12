@@ -17,7 +17,9 @@ function App() {
   return (
     <>
       {screen === "setup" && (
-        <GameSetup 
+        <GameSetup
+          preferences={preferences}
+          setPreferences={setPreferences}
           onPlay={() => setScreen("play")}
         />
       )}
