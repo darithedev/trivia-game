@@ -6,7 +6,7 @@ import GameResult from './components/GameResult.jsx'
 
 function App() {
   const [screen, setScreen] = useState("setup"); // 3 screens: setup, play, result
-  const [questionsObj, setQuestionsObj] = useState({});
+  const [questionsObj, setQuestionsObj] = useState(null);
   const [preferences, setPreferences] = useState({ 
     amount: 5, 
     category: "", 
@@ -48,6 +48,7 @@ function App() {
       {screen === "play" && (
         <GamePlay 
           questionsObj={questionsObj}
+          onExit={() => setScreen("setup")}
           onSubmit={(choices) => {
             setUserChoices(choices);
             setScreen("result");
