@@ -9,7 +9,8 @@ function App() {
   const [questionsObj, setQuestionsObj] = useState(null);
   const [preferences, setPreferences] = useState({ 
     amount: 5, 
-    category: "", 
+    category:  "",
+    categoryName: "",
     difficulty: "", 
     type: "",
   });
@@ -47,6 +48,7 @@ function App() {
 
       {screen === "play" && (
         <GamePlay 
+          preferences={preferences}
           questionsObj={questionsObj}
           onExit={() => setScreen("setup")}
           onSubmit={(choices) => {
