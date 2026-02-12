@@ -13,6 +13,7 @@ function App() {
     difficulty: "", 
     type: "",
   });
+  const [userChoices, setUserChoices] = useState({})
 
   const fetchTriviaQuiz = () => {
     const params = new URLSearchParams();
@@ -46,7 +47,11 @@ function App() {
 
       {screen === "play" && (
         <GamePlay 
-          onSubmit={() => setScreen("result")}
+          questionsObj={questionsObj}
+          onSubmit={(choices) => {
+            setUserChoices(choices);
+            setScreen("result");
+          }}
         />
       )}
 
