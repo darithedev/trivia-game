@@ -63,6 +63,8 @@ function App() {
 
       {screen === "result" && (
         <GameResult
+          userChoices={userChoices}
+          questionsObj={questionsObj}
           onReset={() => setScreen("setup")}
         />
       )}
