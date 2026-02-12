@@ -25,9 +25,9 @@ const GamePlay = ({ questionsObj, onSubmit }) => {
                             .parseFromString(`<!doctype html><body>${question.question}`, 'text/html')
                             .body.textContent}
                         </p>
-                        {[question.correct_answer, ...question.incorrect_answers].sort().map((choice, index) => (
+                        {[question.correct_answer, ...question.incorrect_answers].sort().map((choice, i) => (
                             <button
-                                key={index}
+                                key={i}
                                 onClick={() => handleSelection(index, parser
                                     .parseFromString(`<!doctype html><body>${choice}`, 'text/html')
                                     .body.textContent
@@ -41,7 +41,12 @@ const GamePlay = ({ questionsObj, onSubmit }) => {
                     </div>
                 ))}
             </div>
-            <button onClick={() => onSubmit(userChoices)}>Submit</button>
+            <button
+                disabled={Object.entries(userChoices).length !== questionsObj.results.length}
+                onClick={() => onSubmit(userChoices)}
+            >
+                Submit
+            </button>
         </div>
     )
 }
