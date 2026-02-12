@@ -92,7 +92,6 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
                         ))}
                     </select>
                 </label>
-                {console.log(preferences)}
                 <button type="submit">Play Trivia</button>
             </form>
         </div>
