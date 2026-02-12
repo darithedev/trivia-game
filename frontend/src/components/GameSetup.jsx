@@ -22,7 +22,22 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
         <div className="game-setup">
             <p>Hello from GameSetup</p>
             <form onSubmit={onPlay}>
-
+                <label>
+                    How Many Questions:
+                    <select
+                        value={preferences.amount}
+                        onChange={((event) => 
+                            setPreferences(prev => ({
+                                ...prev,
+                                amount: Number(event.target.value)
+                            }))
+                        )}
+                    >
+                        {amount.map((number) => (
+                            <option key={number} value={number}>{number}</option>
+                        ))}
+                    </select>
+                </label>
                 <button type="submit">Play Trivia</button>
             </form>
         </div>
