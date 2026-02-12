@@ -2,6 +2,21 @@ import { useState } from 'react'
 
 const GameResult = ({ userChoices, questionsObj, onReset }) => {
     const [endResult, setEndResult] = useState({});
+    
+    const fetchResult = () => {
+        const url = 'http://localhost:8080/api/result';
+
+        fetch(url, {
+            method: "POST",
+            headers: { "content-Type": "application/json" },
+            body: JSON.stringify({ 
+                user_answer: userChoices,
+                questions: questionsObj.results
+            })
+        })
+        .then((response) => response.json())
+        .then((result) => setEndResult(result));
+    }
 
     return (
         <div className="game-result">
