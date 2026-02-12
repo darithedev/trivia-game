@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import decode from '../helpers/decodeHtml.js'
 
 const GameResult = ({ userChoices, questionsObj, onReset }) => {
     const [endResult, setEndResult] = useState({});
@@ -30,6 +31,30 @@ const GameResult = ({ userChoices, questionsObj, onReset }) => {
                 ? `You did it!! You scored over 70! You ${endResult.result}!` 
                 : `Aw shucks, you scored less than 70. You ${endResult.result}. Wanna Try Again?`}
             </p>
+
+            <h3>Review:</h3>
+            {questionsObj.results.map((question, index) => (
+                <div key={index}>
+                    <p>{index + 1}: {decode(question.question)}
+                    </p>
+                    {[question.correct_answer, ...question.incorrect_answers].sort().map((choice, i) => (
+                        <button
+                            key={i}
+                            style={
+                                decode(choice) === decode(question.correct_answer)
+                                    ? { backgroundColor: "green" }
+                                    : userChoices[index] === decode(choice)
+                                        ? { backgroundColor: "red" } 
+                                        : {}
+                            }
+                        >
+                            {decode(choice)}
+                        </button>
+                    ))}
+                </div>
+            ))}
+
+            <p>To reset the game, click reset button below</p>
             <button onClick={onReset}>Reset</button>
         </div>
     )
