@@ -1,8 +1,8 @@
 import { useState } from 'react'
+import decode from '../helpers/decodeHtml.js'
 
 const GamePlay = ({ preferences, questionsObj, onSubmit, onExit }) => {
     const [userChoices, setUserChoices] = useState({});
-    const parser = new DOMParser();
 
     if (!questionsObj?.results) {
         return <p>Loading Trivia Questions</p>
@@ -21,26 +21,18 @@ const GamePlay = ({ preferences, questionsObj, onSubmit, onExit }) => {
             <div>
                 {questionsObj.results.map((question, index) => (
                     <div key={index}>
-                        <p>{index + 1}: {parser
-                            .parseFromString(`<!doctype html><body>${question.question}`, 'text/html')
-                            .body.textContent}
+                        <p>{index + 1}: {decode(question.question)}
                         </p>
                         {[question.correct_answer, ...question.incorrect_answers].sort().map((choice, i) => (
                             <button
                                 key={i}
-                                onClick={() => handleSelection(index, parser
-                                    .parseFromString(`<!doctype html><body>${choice}`, 'text/html')
-                                    .body.textContent
-                                )}
-                                style={userChoices[index] === parser
-                                    .parseFromString(`<!doctype html><body>${choice}`, 'text/html')
-                                    .body.textContent 
-                                    ? { backgroundColor: "gray"} : {}
+                                onClick={() => handleSelection(index, decode(choice))}
+                                style={userChoices[index] === decode(choice)
+                                    ? { backgroundColor: "gray"} 
+                                    : {}
                                 }
                             >
-                                {parser
-                                    .parseFromString(`<!doctype html><body>${choice}`, 'text/html')
-                                    .body.textContent}
+                                {decode(choice)}
                             </button>
                         ))}
                     </div>
