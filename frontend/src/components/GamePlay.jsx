@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const GamePlay = ({ questionsObj, onSubmit }) => {
+const GamePlay = ({ questionsObj, onSubmit, onExit }) => {
     const [userChoices, setUserChoices] = useState({});
     const parser = new DOMParser();
 
@@ -52,6 +52,7 @@ const GamePlay = ({ questionsObj, onSubmit }) => {
             >
                 Submit
             </button>
+            <button onClick={onExit}>Exit</button>
         </div>
     )
 }
