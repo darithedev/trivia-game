@@ -56,7 +56,25 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
                         ))}
                     </select>
                 </label>
-                
+
+                <label>
+                    Select Difficulty:
+                    <select
+                        value={preferences.difficulty}
+                        onChange={((event) => 
+                            setPreferences((prev) => ({
+                                ...prev,
+                                difficulty: event.target.value
+                            }))
+                        )}
+                    >
+                        <option value="">Any Difficulty</option>
+                        {difficulty.map(d => (
+                            <option key={d} value={d}>{d}</option>
+                        ))}
+                    </select>
+                </label>
+
                 <button type="submit">Play Trivia</button>
             </form>
         </div>
