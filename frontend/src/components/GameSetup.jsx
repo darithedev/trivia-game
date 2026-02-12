@@ -38,6 +38,25 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
                         ))}
                     </select>
                 </label>
+
+                <label>
+                    Select a Category:
+                    <select
+                        value={preferences.category}
+                        onChange={((event) => 
+                            setPreferences(prev => ({
+                                ...prev,
+                                category: event.target.value
+                            }))
+                        )}
+                    >
+                        <option value="">Any Category</option>
+                        {fetchedCategories.map(c => (
+                            <option key={c.id} value={c.id}>{c.name}</option>
+                        ))}
+                    </select>
+                </label>
+                
                 <button type="submit">Play Trivia</button>
             </form>
         </div>
