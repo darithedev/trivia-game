@@ -1,4 +1,6 @@
-const GamePlay = ({ onSubmit }) => {
+import { useState } from 'react'
+
+const GamePlay = ({ questionsObj, onSubmit }) => {
     return (
         <div className="game-play">
             <p>Hello from GamePlay</p>
