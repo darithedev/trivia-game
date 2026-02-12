@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const GamePlay = ({ questionsObj, onSubmit, onExit }) => {
+const GamePlay = ({ preferences, questionsObj, onSubmit, onExit }) => {
     const [userChoices, setUserChoices] = useState({});
     const parser = new DOMParser();
 
@@ -17,7 +17,7 @@ const GamePlay = ({ questionsObj, onSubmit, onExit }) => {
 
     return (
         <div className="game-play">
-            <p>Hello from GamePlay</p>
+            <h2>Trivia Quiz: {preferences.categoryName === "" ? "Mixed Category" : preferences.categoryName}</h2>
             <div>
                 {questionsObj.results.map((question, index) => (
                     <div key={index}>
