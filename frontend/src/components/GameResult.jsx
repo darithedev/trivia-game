@@ -31,7 +31,7 @@ const GameResult = ({ userChoices, questionsObj, onReset }) => {
                 ? `You did it!! You scored over 70! You ${endResult.result}!` 
                 : `Aw shucks, you scored less than 70. You ${endResult.result}. Wanna Try Again?`}
             </p>
-
+            <p>Correct answers are in green while incorrect answers are in red.</p>
             <h3>Review:</h3>
             {questionsObj.results.map((question, index) => (
                 <div key={index}>
