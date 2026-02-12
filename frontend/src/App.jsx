@@ -42,7 +42,10 @@ function App() {
         <GameSetup
           preferences={preferences}
           setPreferences={setPreferences}
-          onPlay={() => setScreen("play")}
+          onPlay={(event) => {
+            event.preventDefault()
+            setScreen("play")
+          }}
         />
       )}
 
