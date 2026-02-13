@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import './GameSetup.css'
 
 const GameSetup = ({ preferences, setPreferences, onPlay }) => {
     const [fetchedCategories, setFetchedCategories] = useState([]);
@@ -21,7 +22,10 @@ const GameSetup = ({ preferences, setPreferences, onPlay }) => {
     return (
         <div className="game-setup">
             <h1>Trivia Game Setup</h1>
-            <form onSubmit={onPlay}>
+            <form 
+                className="game-form"
+                onSubmit={onPlay}
+            >
                 <label>
                     How Many Questions:
                     <select

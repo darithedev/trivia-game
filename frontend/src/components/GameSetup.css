@@ -1,0 +1,28 @@
+.game-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 40px;
+    background-color: rgb(246, 176, 45);
+    border-radius: 10px;
+}
+
+.game-setup label {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.game-setup select {
+    margin-left: 15px;
+    padding: 10px 12px;
+    background-color: antiquewhite;
+    border: none;
+    border-radius: 6px;
+}
+
+.game-setup button {
+    align-self: center;
+    background-color: rgb(93, 158, 243);
+    width: 50%;
+}
