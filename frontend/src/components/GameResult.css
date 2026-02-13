@@ -1,0 +1,41 @@
+.game-result {
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    background-color: rgb(246, 176, 45);
+    border-radius: 10px;
+    margin: 50px
+}
+
+.result-blurb {
+    padding: 20px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+}
+
+.result-question {
+    display: flex;
+    padding: 20px;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    align-items: flex-start;
+}
+
+.game-result button {
+    background-color: blanchedalmond;;
+    margin: 10px;
+}
+
+.reset {
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 18px;
+    border-top: 2px solid black;
+}
+
+.game-result button.bottom {
+    margin-top: 25px;
+    width: 50%;
+    background-color: rgb(93, 158, 243);
+}

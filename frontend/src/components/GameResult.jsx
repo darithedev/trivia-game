@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import decode from '../helpers/decodeHtml.js'
+import './GameResult.css'
 
 const GameResult = ({ userChoices, questionsObj, onReset }) => {
     const [endResult, setEndResult] = useState({});
@@ -26,25 +27,27 @@ const GameResult = ({ userChoices, questionsObj, onReset }) => {
     return (
         <div className="game-result">
             <h2>Trivia Quiz Result</h2>
-            <p>Your Score: {Math.round(endResult.score)}</p>
-            <p>{endResult.won 
-                ? `You did it!! You scored over 70! You ${endResult.result}!` 
-                : `Aw shucks, you scored less than 70. You ${endResult.result}. Wanna Try Again?`}
-            </p>
-            <p>Correct answers are in green while incorrect answers are in red.</p>
+            <div className="result-blurb">
+                <p>Your Score: {Math.round(endResult.score)}</p>
+                <p>{endResult.won 
+                    ? `You did it!! You scored over 70! You ${endResult.result}!` 
+                    : `Aw shucks, you scored less than 70. You ${endResult.result}. Wanna Try Again?`}
+                </p>
+                <p>Correct answers are in green while incorrect answers are in red.</p>
+            </div>
             <h3>Review:</h3>
             {questionsObj.results.map((question, index) => (
                 <div key={index}>
-                    <p>{index + 1}: {decode(question.question)}
+                    <p className="result-question">{index + 1}: {decode(question.question)}
                     </p>
                     {[question.correct_answer, ...question.incorrect_answers].sort().map((choice, i) => (
                         <button
                             key={i}
                             style={
                                 decode(choice) === decode(question.correct_answer)
-                                    ? { backgroundColor: "green" }
+                                    ? { backgroundColor: "#4CBF72" }
                                     : userChoices[index] === decode(choice)
-                                        ? { backgroundColor: "red" } 
+                                        ? { backgroundColor: "#f56868" } 
                                         : {}
                             }
                         >
@@ -54,8 +57,8 @@ const GameResult = ({ userChoices, questionsObj, onReset }) => {
                 </div>
             ))}
 
-            <p>To reset the game, click reset button below</p>
-            <button onClick={onReset}>Reset</button>
+            <p className="reset">To reset the game, click reset button below</p>
+            <button className="bottom" onClick={onReset}>Reset</button>
         </div>
     )
 }
