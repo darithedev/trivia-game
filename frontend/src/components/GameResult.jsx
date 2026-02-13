@@ -26,7 +26,7 @@ const GameResult = ({ userChoices, questionsObj, onReset }) => {
     return (
         <div className="game-result">
             <h2>Trivia Quiz Result</h2>
-            <p>Your Score: {endResult.score}</p>
+            <p>Your Score: {Math.round(endResult.score)}</p>
             <p>{endResult.won 
                 ? `You did it!! You scored over 70! You ${endResult.result}!` 
                 : `Aw shucks, you scored less than 70. You ${endResult.result}. Wanna Try Again?`}
