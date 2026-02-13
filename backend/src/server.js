@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import calculateScore from './helpers/calculateScore.js';
 
 const app = express();
 
@@ -10,19 +11,17 @@ app.use(express.json());
 app.use(cors());
 
 let categories = [];
-let lastFetchedDate = null;
 
 // Returns message that server is healthy
 app.get('/', async(req,res) => {
     res.json({ message: "Express server is healthy."});
 });
 
-// Fetches all available trivia categories once per day
+// Fetches all available trivia categories once
 app.get('/api/category', async(req, res) => {
     try {
-        const today = new Date();
 
-        if (categories.length > 0 && lastFetchedDate === today.getDate()) {
+        if (categories.length > 0) {
             console.log("returned cached categories")
             return res.json(categories);
         } else console.log("fetching fresh categories");
@@ -37,7 +36,6 @@ app.get('/api/category', async(req, res) => {
         const data = await response.json();
 
         categories = data.trivia_categories
-        lastFetchedDate = today.getDate();
         res.status(200).json(categories);
     } catch (error) {
         console.error(error.message);
@@ -53,7 +51,7 @@ app.get('/api/trivia/:amount', async(req, res) => {
     try {
         const params = new URLSearchParams({ amount }); // amount: number of questions
 
-        // Appends category, difficulty, and or type is queries are passed
+        // Appends category, difficulty, and or type if queries are passed
         if (category) params.append('category', category);
         if (difficulty) params.append('difficulty', difficulty);
         if (type) params.append('type', type); // quiz type
@@ -73,9 +71,10 @@ app.get('/api/trivia/:amount', async(req, res) => {
 
 // Determines if the user won or lost based on trivia quiz score
 app.post('/api/result', async(req, res) => {
-    const { score } = req.body;
+    const { user_answer, questions } = req.body;
 
     try {
+        const score = calculateScore(user_answer, questions);
         if (score < 0) {
             throw new Error("Error! Score is less than 0.")
         }
@@ -84,7 +83,8 @@ app.post('/api/result', async(req, res) => {
 
         res.status(200).json({
             won,
-            result: won ? 'won' : 'lost'
+            result: won ? 'won' : 'lost',
+            score: score
         });
 
     } catch (error) {
