@@ -1,0 +1,26 @@
+.game-play {
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    background-color: rgb(246, 176, 45);
+    border-radius: 10px;
+    margin: 50px
+}
+
+.question {
+    display: flex;
+    padding: 20px;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    align-items: flex-start;
+}
+
+.game-play button {
+    background-color: rgb(93, 158, 243);
+    margin: 10px;
+}
+
+.game-play button.bottom {
+    margin-top: 25px;
+    width: 50%;
+}

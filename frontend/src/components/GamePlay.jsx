@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import decode from '../helpers/decodeHtml.js'
+import './GamePlay.css'
 
 const GamePlay = ({ preferences, questionsObj, onSubmit, onExit }) => {
     const [userChoices, setUserChoices] = useState({});
@@ -23,7 +24,7 @@ const GamePlay = ({ preferences, questionsObj, onSubmit, onExit }) => {
                         <h2>Oops, there aren't enough questions in this category</h2>
                         <p>Please reduce the number of questions or change the difficulty and then try again!</p>
                         <p>If you're still having issues, set the difficulty to "Any Difficulty"</p>
-                        <button onClick={onExit}>Go Back</button>
+                        <button className="bottom" onClick={onExit}>Go Back</button>
                     </>
                 ) : (
                     <>
@@ -31,14 +32,14 @@ const GamePlay = ({ preferences, questionsObj, onSubmit, onExit }) => {
                         <div>
                             {questionsObj.results.map((question, index) => (
                                 <div key={index}>
-                                    <p>{index + 1}: {decode(question.question)}
+                                    <p className="question">{index + 1}: {decode(question.question)}
                                     </p>
                                     {[question.correct_answer, ...question.incorrect_answers].sort().map((choice, i) => (
                                         <button
                                             key={i}
                                             onClick={() => handleSelection(index, decode(choice))}
                                             style={userChoices[index] === decode(choice)
-                                                ? { backgroundColor: "gray"} 
+                                                ? { backgroundColor: "gray" } 
                                                 : {}
                                             }
                                         >
@@ -48,13 +49,13 @@ const GamePlay = ({ preferences, questionsObj, onSubmit, onExit }) => {
                                 </div>
                             ))}
                         </div>
-                        <button
+                        <button className="bottom"
                             disabled={Object.entries(userChoices).length !== questionsObj.results.length}
                             onClick={() => onSubmit(userChoices)}
                         >
                             Submit
                         </button>
-                        <button onClick={onExit}>Exit</button>
+                        <button className="bottom" onClick={onExit}>Exit</button>
                     </>
                 )
             }
