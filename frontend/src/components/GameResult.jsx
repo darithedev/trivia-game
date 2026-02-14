@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import decode from '../helpers/decodeHtml.js'
 import './GameResult.css'
+import JSConfetti from 'js-confetti'
 
 const GameResult = ({ userChoices, questionsObj, onReset }) => {
     const [endResult, setEndResult] = useState({});
+    const jsConfetti = new JSConfetti()
     
     const fetchResult = () => {
         const url = 'http://localhost:8080/api/result';
@@ -22,7 +24,14 @@ const GameResult = ({ userChoices, questionsObj, onReset }) => {
 
     useEffect(() => {
         fetchResult();
-    }, []);
+
+        if (endResult.won) {
+            jsConfetti.addConfetti({
+                emojis: ['🦄', '🌈', '⚡️'],
+                emojiSize: 75,
+            });
+        } 
+    }, [endResult.won]);
 
     return (
         <div className="game-result">
