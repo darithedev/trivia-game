@@ -25,20 +25,12 @@ const GameResult = ({ userChoices, questionsObj, onReset }) => {
     useEffect(() => {
         fetchResult();
 
-        endResult.won 
-        ? (
+        if (endResult.won) {
             jsConfetti.addConfetti({
                 emojis: ['🦄', '🌈', '⚡️'],
                 emojiSize: 75,
-            })
-        )
-        : (
-            jsConfetti.addConfetti({
-                emojis: ['😭', '🥺'],
-                emojiSize: 75,
-            })
-        )
-
+            });
+        } 
     }, [endResult.won]);
 
     return (
