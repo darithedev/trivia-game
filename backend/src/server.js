@@ -23,7 +23,7 @@ app.get('/api/category', async(req, res) => {
 
         if (categories.length > 0) {
             console.log("returned cached categories")
-            return res.json(categories);
+            return res.status(304).json(categories);
         } else console.log("fetching fresh categories");
 
         const url = 'https://opentdb.com/api_category.php';
@@ -81,7 +81,7 @@ app.post('/api/result', async(req, res) => {
 
         const won = score >= 70; // bool value
 
-        res.status(200).json({
+        res.status(201).json({
             won,
             result: won ? 'won' : 'lost',
             score: score
